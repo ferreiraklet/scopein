@@ -121,7 +121,7 @@ func scopein(v *url.URL, single string, scopeFile string, outscope string, outsc
 	}
 	
 
-	//fmt.Println(host)
+	
 
 	// SPLIT REGEX WITH |, -s "xx|xxx|xxx"
 	if single != ""{
@@ -129,10 +129,6 @@ func scopein(v *url.URL, single string, scopeFile string, outscope string, outsc
 			single = strings.Replace(single, "*.", "", 1)
 		}
 		
-
-		//fmt.Println(single)
-		//.*\.?evil.com\/?.*
-		//^((http|https)?(:\/\/)?(www.)?([a-z0-9]+\.)?)?(xxxxxx)\/?.*
 
 		re, err := regexp.Compile(`.*\.?` + single + `\/?.*`)
 		if err != nil{
@@ -148,11 +144,7 @@ func scopein(v *url.URL, single string, scopeFile string, outscope string, outsc
 			
 		}
 		
-			/////fmt.Println(v.String())
-			// fix regex
-			//return v
-			//if value[0] != string[0] && value[0] != "." && value[0] != "-"{}
-			//(http:\/\/|https:\/\/)?(\.*\.[a-z0-9.-])?(www.)?(scope.com)\/?.*
+		//(http:\/\/|https:\/\/)?(\.*\.[a-z0-9.-])?(www.)?(scope.com)\/?.*
 		
 
 	}else if scopeFile != ""{
@@ -163,10 +155,10 @@ func scopein(v *url.URL, single string, scopeFile string, outscope string, outsc
 		}
 		arr := string(f)
 		var array string
-		//fmt.Println(len(arr))
+		
 		str := strings.Split(arr, "\n")
 		for _, p := range str{
-			//fmt.Println("xïsde: "+p)
+			
 			if !strings.HasPrefix(p, " "){
 				array = array + p + "|"
 			}
@@ -210,7 +202,7 @@ func scopein(v *url.URL, single string, scopeFile string, outscope string, outsc
 		if err != nil{
 			log.Println("Failed to compile regex!")
 		}
-		//fmt.Println("x: " + host)
+		
 		search := re.FindAllString(host, -1)
 		if (search == nil) == true{
 			if v.String() == "https:"{
@@ -231,10 +223,10 @@ func scopein(v *url.URL, single string, scopeFile string, outscope string, outsc
 		}
 		arr := string(f)
 		var array string
-		//fmt.Println(len(arr))
+		
 		str := strings.Split(arr, "\n")
 		for _, p := range str{
-			//fmt.Println("xïsde: "+p)
+			
 			if !strings.HasPrefix(p, " "){
 				array = array + p + "|"
 			}
@@ -253,7 +245,7 @@ func scopein(v *url.URL, single string, scopeFile string, outscope string, outsc
 			log.Println("Failed to compile regex!")
 			
 		}
-		//fmt.Println("TEXT: "+ outs)
+		
 		search := re.FindAllString(host, -1)
 		if (search == nil) == true{
 			if v.String() == "https:"{
@@ -269,51 +261,6 @@ func scopein(v *url.URL, single string, scopeFile string, outscope string, outsc
 		return "not"
 	}
 	return "not"
-	//return fmt.Printf("%s", v)
+	
 }
 
-/*func outx(v *url.URL, host string, file string) string{
-	//f, err := os.Open(file)
-	f, err := os.ReadFile(file)
-
-	if err != nil{
-		log.Println("Error opening file!")
-	}
-	arr := string(f)
-	var array string
-	//fmt.Println(len(arr))
-	str := strings.Split(arr, "\n")
-	for _, p := range str{
-		//fmt.Println("xïsde: "+p)
-		if !strings.HasPrefix(p, " "){
-			array = array + p + "|"
-		}
-	}
-
-	outs := string(array[0:len(array)-2])
-
-	if strings.HasPrefix(outs, "*."){
-		outs = strings.Replace(outs, "*.", "", -1)
-	}
-		
-
-		
-	re, err := regexp.Compile(`.*\.?` + outs + `\/?.*`)
-	if err != nil{
-		log.Println("Failed to compile regex!")
-		
-	}
-	//fmt.Println("TEXT: "+ outs)
-	search := re.FindAllString(host, -1)
-	if (search == nil) == true{
-		if v.String() == "https:"{
-			return "not"
-		}
-		return v.String()
-	}else{
-		return "not"
-	}
-
-
-	return "not"
-}*/
