@@ -140,7 +140,7 @@ func scopein(v *url.URL, single string, scopeFile string, outscope string, outsc
 			if v.String() == "https:"{
 				return "not"
 			}
-			return host
+			return v.String()
 			
 		}
 		
@@ -182,7 +182,7 @@ func scopein(v *url.URL, single string, scopeFile string, outscope string, outsc
 			if v.String() == "https:"{
 				return "not"
 			}
-			return host
+			return v.String()
 			}
 			
 			//return "not"
@@ -208,7 +208,7 @@ func scopein(v *url.URL, single string, scopeFile string, outscope string, outsc
 			if v.String() == "https:"{
 				return "not"
 			}
-			return host
+			return v.String()
 		}else{
 			return "not"
 		}
@@ -251,7 +251,7 @@ func scopein(v *url.URL, single string, scopeFile string, outscope string, outsc
 			if v.String() == "https:"{
 				return "not"
 			}
-			return host
+			return v.String()
 		}else{
 			return "not"
 		}
